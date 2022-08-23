@@ -1,39 +1,29 @@
 # Definition for singly-linked list.
-class ListNode:
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
-        
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
 class Solution:
-    def mergeTwoLists(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
-        if l1 is None:
-            return l2
-        if l2 is None:
-            return l1
-        if l1.val < l2.val:
-            temp = head = ListNode(l1.val)
-            l1 = l1.next
-        else:
-            temp = head = ListNode(l2.val)
-            l2 = l2.next
-
-        while l1 is not None and l2 is not None:
-            if l1.val < l2.val:
-                temp.next = ListNode(l1.val)
-                l1 = l1.next
-            else:
-                temp.next = ListNode(l2.val)
-                l2 = l2.next
-            temp = temp.next
-
-        while l1 is not None:
-            temp.next = ListNode(l1.val)
-            l1 = l1.next
-            temp = temp.next
-
-        while l2 is not None:
-            temp.next = ListNode(l2.val)
-            l2 = l2.next
-            temp = temp.next
-        return head
-        
+    def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+        if list1 is None and list2 is None:
+            return None
+        if list1 is None:
+            return list2
+        if lis2 is None:
+            return list1
+        n=[]
+        m=[]
+        while list1 is not None:
+            n.append(list1.val)
+            list1=list1.next
+        while list2 is not None:
+            m.append(list2.val)
+            list2=list2.next
+        n+=m
+        n.sort()
+        LL=ListNode()
+        for i in n[::-1]:
+            newNode=ListNode(i)
+            newNode.next=LL.next
+            LL.next=newNode
+        return LL.next
